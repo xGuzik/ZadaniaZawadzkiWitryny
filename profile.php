@@ -46,9 +46,17 @@ $profilePhotoUrl = $result['url']
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil użytkownika</title>
-    <link rel="stylesheet" href="css2.css">
+    <link rel="stylesheet" href="css.css">
 </head>
 <body>
+    <header>
+        <img src="banner kociak.jpg" alt="">
+        <h1>Samotny Kociak.pl</h1>
+    </header>
+
+    <nav>
+        <ul> 
+            <li><a href="html.html">Strona Główna</a></li>
     <div id="profileContent">
         <span id="name">
             <?php echo $firstName." ".$lastName; ?>

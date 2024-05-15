@@ -75,4 +75,17 @@ p {
     font-style: italic;
 }
 
+div#profileContent {
+    text-align: center;
+}
+span#name {
+    font-family: 'Comic Sans MS';
+    font-size: 3rem;
+    line-height: rem;
+    display: block;
+}
+
+#buttoncolor{
+    color: rgb(228, 123, 238);
+}
 
