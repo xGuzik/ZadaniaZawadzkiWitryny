@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php echo htmlspecialchars($resultMessage); ?>
                 </div>
             <?php endif; ?>
+            <div class="mt-3">
+                <a href="html.html" class="btn btn-secondary w-100">Powrót do strony głównej</a>
+            </div>
         </div>
     </div>
 </body>
