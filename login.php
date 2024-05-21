@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div id="container">
-        <h1 class="text-center mt-5 mb-5">Formularz logowania:</h1>
+        <h1 class="text-center mt-5 mb-5">Logowanie:</h1>
         <div id="loginForm" class="col-4 offset-4 mt-5">
             <form action="login.php" method="post"> 
                 <label for="emailInput" class="form-label">Adres e-mail:</label>
