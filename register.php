@@ -1,14 +1,22 @@
 <?php
-//zaimportuj kod klasy
+// Zaimportuj kod klasy
 require_once('class/User.class.php');
 
-if (isset($_REQUEST['email']) && isset($_REQUEST['password'])) {
-    //wysłano formularz - przechwyć i obrób dane
-    $email = $_REQUEST['email'];
-    $password = $_REQUEST['password'];
-    //wywołujemy metodę klasy
-    //metody statyczne w PHP wywołuje się poprzez ::
-    $result = User::Register($email, $password);
+$resultMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Przechwyć i obrób dane
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Walidacja po stronie serwera
+    if (strlen($password) < 8) {
+        $resultMessage = "Hasło musi mieć co najmniej 8 znaków";
+    } else {
+        // Wywołujemy metodę klasy
+        $result = User::Register($email, $password);
+        $resultMessage = $result ? "Udało się utworzyć konto" : "Nie udało się utworzyć konta";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -28,23 +36,18 @@ if (isset($_REQUEST['email']) && isset($_REQUEST['password'])) {
         <div id="loginForm" class="col-4 offset-4 mt-5">
             <form action="register.php" method="post">
                 <label for="emailInput" class="form-label">Adres e-mail:</label>
-                <input type="email" class="form-control mb-3" name="email" id="emailInput">
+                <input type="email" class="form-control mb-3" name="email" id="emailInput" required>
 
                 <label for="passwordInput" class="form-label">Hasło:</label>
-                <input type="password" class="form-control mb-3" name="password" id="passwordInput">
+                <input type="password" class="form-control mb-3" name="password" id="passwordInput" required minlength="8">
 
                 <button type="submit" id="buttoncolor" class="btn btn-primary w-100 mt-3">Zarejestruj</button>
             </form>
-            <?php
-            if (isset($result)) {
-                if ($result) {
-                    echo "Udało się utworzyć konto";
-                } else {
-                    echo "Nie udało się utworzyć konta";
-                }
-            }
-
-            ?>
+            <?php if ($resultMessage): ?>
+                <div class="mt-3">
+                    <?php echo htmlspecialchars($resultMessage); ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </body>
